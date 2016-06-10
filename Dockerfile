@@ -4,7 +4,7 @@ MAINTAINER Dmitry Prazdnichnov <dp@bambucha.org>
 ENV VERSION 0.13.4-r0
 ENV HOME /mnt
 
-RUN apk --no-cache add syncthing=$VERSION
+RUN apk --no-cache add ca-certificates syncthing=$VERSION
 
 VOLUME /config
 
