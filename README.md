@@ -8,7 +8,7 @@
 
 ```shell
 docker run \
-    --user 1000:1000 \
+    --user `id -u`:`id -g` \
     --publish 8384:8384 \
     --publish 22000:22000 \
     --publish 21027:21027/udp \
