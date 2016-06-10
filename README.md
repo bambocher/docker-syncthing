@@ -1,11 +1,9 @@
-# docker-syncthing
+# Alpine Syncthing Docker Container
 
 [![Docker Layers](https://badge.imagelayers.io/bambucha/syncthing:latest.svg)](https://imagelayers.io/?images=bambucha/syncthing:latest 'Get your own badge on imagelayers.io')
 [![Docker Pulls](https://img.shields.io/docker/pulls/bambucha/syncthing.svg)](https://registry.hub.docker.com/u/bambucha/syncthing/)
 
-Alpine Syncthing Docker Container
-
-Run Syncthing container:
+## Usage
 
 ```shell
 docker run \
@@ -21,6 +19,6 @@ docker run \
     bambucha/syncthing
 ```
 
-### License
+## License
 
-[The MIT License (MIT)](LICENSE)
+[The MIT License](LICENSE)
