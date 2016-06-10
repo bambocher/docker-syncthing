@@ -2,8 +2,7 @@
 
 [![Docker Stars](https://img.shields.io/docker/stars/bambucha/syncthing.svg)](https://registry.hub.docker.com/u/bambucha/syncthing/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/bambucha/syncthing.svg)](https://registry.hub.docker.com/u/bambucha/syncthing/)
-[![Docker Layers](https://img.shields.io/imagelayers/layers/bambucha/syncthing/latest.svg)](https://registry.hub.docker.com/u/bambucha/syncthing/)
-[![Docker Size](https://img.shields.io/imagelayers/image-size/bambucha/syncthing/latest.svg)](https://registry.hub.docker.com/u/bambucha/syncthing/)
+[![GitHub Tag](https://img.shields.io/github/tag/bambocher/docker-syncthing.svg)](https://registry.hub.docker.com/u/bambucha/syncthing/)
 
 ## Usage
 
