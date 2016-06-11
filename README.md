@@ -1,7 +1,7 @@
 # Alpine Syncthing Docker Container
 
-[![Docker Stars](https://img.shields.io/docker/stars/bambucha/syncthing.svg)](https://registry.hub.docker.com/u/bambucha/syncthing/)
 [![GitHub Tag](https://img.shields.io/github/tag/bambocher/docker-syncthing.svg)](https://registry.hub.docker.com/u/bambucha/syncthing/)
+[![Docker Stars](https://img.shields.io/docker/stars/bambucha/syncthing.svg)](https://registry.hub.docker.com/u/bambucha/syncthing/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/bambucha/syncthing.svg)](https://registry.hub.docker.com/u/bambucha/syncthing/)
 [![Docker Automated Build](https://img.shields.io/badge/automated-build-green.svg)](https://registry.hub.docker.com/u/bambucha/syncthing/)
 [![Docker License](https://img.shields.io/badge/license-MIT-green.svg)](https://registry.hub.docker.com/u/bambucha/syncthing/)
