@@ -7,20 +7,36 @@
 ## [Docker Run](https://docs.docker.com/engine/reference/run/)
 
 ```shell
-docker run \
-    --d \
+SYNC_USER=$(id -u)
+SYNC_GROUP=$(id -g)
+SYNC_CONF=$(pwd)/config
+SYNC_DATA=$(pwd)/data
+sudo mkdir $SYNC_DATA $SYNC_CONF
+sudo chown $SYNC_USER:$SYNC_GROUP $SYNC_DATA $SYNC_CONF
+
+sudo docker run \
+    -d \
     --restart always \
     --name syncthing \
-    --user $(id -u):$(id -g) \
-    --p 8384:8384 \
-    --p 22000:22000 \
-    --p 21027:21027/udp \
-    --v $(pwd)/config:/syncthing \
-    --v $(pwd)/data:/mnt \
+    --user $SYNC_USER:$SYNC_GROUP \
+    -p 8384:8384 \
+    -p 22000:22000 \
+    -p 21027:21027/udp \
+    -v $SYNC_CONF:/syncthing \
+    -v $SYNC_DATA:/mnt \
     bambucha/syncthing
 ```
 
 ## [Docker Compose](https://docs.docker.com/compose/) with [Inotify](https://github.com/bambucha/docker-syncthing-inotify/) image
+
+```shell
+SYNC_USER=1000
+SYNC_GROUP=1000
+SYNC_CONF=$(pwd)/config
+SYNC_DATA=$(pwd)/data
+sudo mkdir $SYNC_DATA $SYNC_CONF
+sudo chown $SYNC_USER:$SYNC_GROUP $SYNC_DATA $SYNC_CONF
+```
 
 ```yml
 version: "2"
@@ -45,6 +61,10 @@ services:
       - ./data:/mnt:ro
     links:
       - syncthing
+```
+
+```shell
+docker-compose up -d
 ```
 
 ## License
