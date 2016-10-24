@@ -1,0 +1,17 @@
+#!/bin/sh
+
+VCS_REF=`git rev-parse --short HEAD`
+VERSION=`git ls-remote --tags https://github.com/syncthing/syncthing \
+    | grep -v - | grep -v { | awk '{print $2}' \
+    | awk -F"/" '{print $3}' | tail -n 1 | sed 's/v//g'`
+
+echo $VCS_REF
+echo $VERSION
+
+docker build \
+    --build-arg VCS_REF=$VCS_REF \
+    --build-arg VERSION=$VERSION \
+    -t $IMAGE_NAME .
+
+docker tag $IMAGE_NAME $DOCKER_REPO:$VERSION
+docker push $DOCKER_REPO:$VERSION

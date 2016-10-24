@@ -1,24 +1,31 @@
 FROM alpine:3.4
 MAINTAINER Dmitry Prazdnichnov <dp@bambucha.org>
 
-ENV VERSION 0.14.9
-ENV CHECKSUM 5e4a505e0683d319c0d38f34be3f2bb53c7c7b8c53a7f0b672381271c1fc8ef4
-ENV HOME /mnt
+ARG VCS_REF
+ARG VERSION
 
-RUN apk --no-cache add ca-certificates openssl \
-    && wget https://github.com/syncthing/syncthing/releases/download/v$VERSION/syncthing-linux-amd64-v$VERSION.tar.gz \
-    && echo $CHECKSUM "" *.gz | sha256sum -c - \
-    && tar zxf *.gz \
-    && rm *.gz \
-    && mv syncthing*/syncthing /usr/bin \
-    && rm -rf syncthing* \
-    && apk del openssl
+LABEL org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-url=https://github.com/bambocher/docker-syncthing \
+      org.label-schema.version=$VERSION \
+      org.label-schema.license=MIT \
+      org.label-schema.schema-version="1.0"
+
+ENV URL=https://github.com/syncthing/syncthing/releases/download \
+    API=https://api.github.com/repos/syncthing/syncthing/releases/latest \
+    XDG_CONFIG_HOME=/ \
+    HOME=/mnt \
+    BUILD="curl tar"
+
+RUN apk --no-cache add ca-certificates $BUILD && \
+    curl -sL $URL/$VERSION/syncthing-linux-amd64-$VERSION.tar.gz | \
+    tar xz --no-anchored -C /usr/bin --strip-components=1 syncthing && \
+    apk del $BUILD
 
 WORKDIR /mnt
 
 USER 1000:1000
-VOLUME /srv /mnt
-EXPOSE 8384 22000 21025/udp
+VOLUME ["/syncthing", "/mnt"]
+EXPOSE 8384 22000 21027/udp
 
 ENTRYPOINT ["syncthing"]
-CMD ["-gui-address=0.0.0.0:8384", "-home=/srv", "-no-browser", "-no-restart", "-logflags=0"]
+CMD ["-gui-address=:8384", "-no-browser", "-no-restart", "-logflags=0"]
