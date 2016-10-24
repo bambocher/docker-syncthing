@@ -17,7 +17,7 @@ ENV URL=https://github.com/syncthing/syncthing/releases/download \
     BUILD="curl tar"
 
 RUN apk --no-cache add ca-certificates $BUILD && \
-    curl -sL $URL/$VERSION/syncthing-linux-amd64-$VERSION.tar.gz | \
+    curl -sL $URL/v$VERSION/syncthing-linux-amd64-v$VERSION.tar.gz | \
     tar xz --no-anchored -C /usr/bin --strip-components=1 syncthing && \
     apk del $BUILD
 
