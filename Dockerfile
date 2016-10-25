@@ -25,7 +25,7 @@ WORKDIR /mnt
 
 USER 1000:1000
 VOLUME ["/syncthing", "/mnt"]
-EXPOSE 8384 22000 21027/udp
+EXPOSE 8384 22000 21025/udp 21026/udp 21027/udp
 
 ENTRYPOINT ["syncthing"]
 CMD ["-gui-address=:8384", "-no-browser", "-no-restart", "-logflags=0"]

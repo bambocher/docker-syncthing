@@ -21,6 +21,8 @@ sudo docker run \
     --user $SYNC_USER:$SYNC_GROUP \
     -p 8384:8384 \
     -p 22000:22000 \
+    -p 21025:21025/udp \
+    -p 21026:21026/udp \
     -p 21027:21027/udp \
     -v $SYNC_CONF:/syncthing \
     -v $SYNC_DATA:/mnt \
@@ -55,6 +57,8 @@ services:
     ports:
       - 8384:8384
       - 22000:22000
+      - 21025:21025/udp
+      - 21026:21026/udp
       - 21027:21027/udp
   inotify:
     restart: always
