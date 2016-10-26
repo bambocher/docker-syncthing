@@ -17,7 +17,7 @@ ENV URL=https://github.com/syncthing/syncthing/releases/download \
     HOME=/mnt
 
 RUN apk --no-cache add ca-certificates \
-    && apk --no-cache --virtual build-dependencies curl tar \
+    && apk --no-cache --virtual build-dependencies add curl tar \
     && curl -sL $URL/v$VERSION/syncthing-linux-amd64-v$VERSION.tar.gz \
         | tar xz --no-anchored -C /usr/bin --strip-components=1 syncthing \
     && apk del build-dependencies
